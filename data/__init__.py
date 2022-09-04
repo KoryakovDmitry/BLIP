@@ -6,6 +6,7 @@ from torchvision.transforms.functional import InterpolationMode
 from data.coco_karpathy_dataset import coco_karpathy_train, coco_karpathy_caption_eval, coco_karpathy_retrieval_eval
 from data.nocaps_dataset import nocaps_eval
 from data.flickr30k_dataset import flickr30k_train, flickr30k_retrieval_eval
+from data.agro_dataset import agro_train, agro_retrieval_eval
 from data.vqa_dataset import vqa_dataset
 from data.nlvr_dataset import nlvr_dataset
 from data.pretrain_dataset import pretrain_dataset
@@ -55,7 +56,13 @@ def create_dataset(dataset, config, min_scale=0.5):
         val_dataset = flickr30k_retrieval_eval(transform_test, config['image_root'], config['ann_root'], 'val') 
         test_dataset = flickr30k_retrieval_eval(transform_test, config['image_root'], config['ann_root'], 'test')          
         return train_dataset, val_dataset, test_dataset     
-    
+
+    elif dataset=='retrieval_agro':
+        train_dataset = agro_train(transform_train, config['image_root'], config['ann_train'])
+        val_dataset = agro_retrieval_eval(transform_test, config['image_root'], config['ann_val'])
+        test_dataset = agro_retrieval_eval(transform_test, config['image_root'], config['ann_test'])
+        return train_dataset, val_dataset, test_dataset
+
     elif dataset=='vqa': 
         train_dataset = vqa_dataset(transform_train, config['ann_root'], config['vqa_root'], config['vg_root'], 
                                     train_files = config['train_files'], split='train') 

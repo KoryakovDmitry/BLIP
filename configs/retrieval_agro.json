@@ -1,0 +1,22 @@
+{
+  "image_root": "/Volumes/Seagate/AGRO_DS_BUILDING/DATA/agro/images",
+  "ann_train": "/Volumes/Seagate/AGRO_DS_BUILDING/DATA/agro/train_data.json",
+  "ann_val": "/Volumes/Seagate/AGRO_DS_BUILDING/DATA/agro/val_data.json",
+  "ann_test": "/Volumes/Seagate/AGRO_DS_BUILDING/DATA/agro/test_data.json",
+  "dataset": "agro",
+  "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_retrieval_flickr.pth",
+  "vit": "base",
+  "batch_size_train": 32,
+  "batch_size_test": 64,
+  "vit_grad_ckpt": true,
+  "vit_ckpt_layer": 4,
+  "init_lr": 0.00001,
+  "image_size": 256,
+  "queue_size": 57600,
+  "alpha": 0.4,
+  "k_test": 128,
+  "negative_all_rank": false,
+  "weight_decay": 0.05,
+  "min_lr": 0,
+  "max_epoch": 6
+}
